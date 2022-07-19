@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import Alert from 'react-bootstrap/Alert'
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -14,7 +15,10 @@ class Map extends Component {
         searchQuery: '',
         location: '',
         show: 'none',
-        icon: ''
+        icon: '',
+        mapImage: '',
+        errorMessage: '',
+        showAlert: false
       }
    }
 
@@ -30,10 +34,14 @@ class Map extends Component {
           location: obj.display_name,
           lat: obj.lat,
           lon: obj.lon,
-          icon: obj.icon
+          icon: obj.icon,
+          mapImage: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_CITY_KEY}&center=${obj.lat},${obj.lon}&zoom=12&size=400x400&format=png`
         })
-      }
-      );
+      })
+      .catch((error) => {
+        const errorMessage = `${error.response.data.error}. ${error.message} (${error.code}).`;
+        this.setState({showAlert: true, errorMessage: errorMessage})
+      })
   }
 
    handleChange = (e) => {
@@ -45,21 +53,27 @@ class Map extends Component {
 
    render() {
     return (
-      <Container>
-        <Form onSubmit = {this.handleCitySearch}>
-          <Form.Control type='text' onChange={this.handleChange} placeholder='Input city name'/>
-          <Button type='submit'>Explore!</Button>
+      <Container className='searchAndCard'>
+        <Form onSubmit = {this.handleCitySearch} className='search'>
+          <Form.Control type='text' onChange={this.handleChange} placeholder='Input city name' />
+          <Button type='submit' className='submit'>Explore!</Button>
         </Form>
-        <Card>
-          <Card.Img variant ="top" src={this.state.icon} />
+        <Card className='mapCard' style={{ width: '40rem'}}>
+          <Card.Img variant ="top" src={this.state.mapImage} />
           <Card.Body>
             <Card.Title>{this.state.location}</Card.Title>
-            <div>
+            <div className='holder'>
               <Card.Text>Latitude: {this.state.lat}</Card.Text>
               <Card.Text>Longitude: {this.state.lon}</Card.Text>
             </div>
           </Card.Body>
         </Card>
+        <Alert show={this.state.showAlert} variant="danger" onClose={() => this.setState({ showAlert: false })} dismissible>
+          <Alert.Heading>
+            Input was invalid. Option: Check spelling.
+          </Alert.Heading>
+          {this.state.errorMessage}
+        </Alert>
       </Container>
     )
    }

@@ -4,7 +4,7 @@ import Map from './Components/map.js'
 
 function App() {
   return (
-    <Map />
+    <Map className='map'/>
   );
 }
 

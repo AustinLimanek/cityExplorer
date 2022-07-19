@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+.searchAndCard {
+  text-align: center;
+  background: rgb(75, 142, 213);
+}
+
+.mapCard {
+  padding: auto;
+}
+
+.holder {
+  align-items: center;
+}
+
+.search {
+  background-color: rgb(50, 107, 169);
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.submit {
+  margin: 10px;
+}
+
+.map {
+  background-color: green;
+  align-items: center;
+}
