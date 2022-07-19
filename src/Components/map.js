@@ -30,7 +30,7 @@ class Map extends Component {
         console.log(response);
         let obj = response.data[0];
         this.setState({
-          show: 'ltbl',
+          show: 'show',
           location: obj.display_name,
           lat: obj.lat,
           lon: obj.lon,
