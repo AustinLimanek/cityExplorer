@@ -26,3 +26,5 @@ Visual Studio Code was used to write the code. npm was used to install axios, re
 
 Lucy Gelderloos - worked on lab 6 data flow diagram
 Mandy Mason - help with Netlify to locationIQ token access.
+
+![Lab 06 Whiteboard](.src/dataflowdiagram.png)
