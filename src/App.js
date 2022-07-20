@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Map from './Components/Map.js'
+import Map from './Components/map.js'
 
 function App() {
   return (
