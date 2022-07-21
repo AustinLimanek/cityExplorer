@@ -47,7 +47,7 @@ class Map extends Component {
 
   handleWeather = (e) => {
     e.preventDefault();
-    const url = `https://city-explorerajl.herokuapp.com/?city=${this.state.searchQuery}`;
+    const url = `https://city-explorerajl.herokuapp.com/weather?city=${this.state.searchQuery}`;
     axios.get(url).then(
       response => {
         console.log(response);
