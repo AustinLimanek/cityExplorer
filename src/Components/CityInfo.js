@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card';
 const axios = require('axios').default;
 
 
-class Map extends Component {
+class CityInfo extends Component {
 
    constructor() {
       super();
@@ -107,4 +107,4 @@ class Map extends Component {
    }
 }
 
-export default Map;
+export default CityInfo;
