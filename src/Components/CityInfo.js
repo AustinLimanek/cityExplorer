@@ -19,7 +19,8 @@ class CityInfo extends Component {
         mapImage: '',
         errorMessage: '',
         showAlert: false,
-        weather: ''
+        weather: '',
+        movies: ''
       }
    }
 
@@ -61,6 +62,22 @@ class CityInfo extends Component {
       })
   }
 
+  handleMovies = (e) => {
+    e.preventDefault();
+    const url = `https://city-explorerajl.herokuapp.com/movies?query=${this.state.searchQuery}`;
+    axios.get(url).then(
+      response => {
+        console.log(response);
+        this.setState({
+          movies: response,
+        })
+      })
+      .catch((error) => {
+        const errorMessage = `${error.response.data.error}. ${error.message} (${error.code}).`;
+        this.setState({ showAlert: true, errorMessage: errorMessage })
+      })
+  }
+
    handleChange = (e) => {
     let { value } = e.target;
     value.toLowerCase();
@@ -83,11 +100,17 @@ class CityInfo extends Component {
               <Card.Text>Latitude: {this.state.lat}</Card.Text>
               <Card.Text>Longitude: {this.state.lon}</Card.Text>
             </div>
+            <div>
             <Form onSubmit = {this.handleWeather}>
           <Button type='submit' className='submit'>Weather!</Button>
-        </Form>
+            </Form>
+            <Form onSubmit = {this.handleMovies}>
+          <Button type='submit' className='submit'>Movies!</Button>
+            </Form>
+            </div>
           </Card.Body>
         </Card>
+
        {this.state.weather && (this.state.weather.data.map(element => 
         <Card>
           <Card.Body>
@@ -95,6 +118,14 @@ class CityInfo extends Component {
           <Card.Text>{element.description}</Card.Text>
           </Card.Body>
         </Card>))}
+
+       {/* {this.state.weather && (this.state.weather.data.map(element => 
+        <Card>
+          <Card.Body>
+          <Card.Title>{element.date}</Card.Title>
+          <Card.Text>{element.description}</Card.Text>
+          </Card.Body>
+        </Card>))} */}
 
         <Alert show={this.state.showAlert} variant="danger" onClose={() => this.setState({ showAlert: false })} dismissible>
           <Alert.Heading>
