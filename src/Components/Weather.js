@@ -1,4 +1,7 @@
 import { Component } from 'react';
+import Card from 'react-bootstrap/Card'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 class Weather extends Component {
 
@@ -11,10 +14,18 @@ class Weather extends Component {
 
   render() {
     return (
-      <div>
-        <p>{this.props.date}</p>
-        <p>{this.props.description}</p>
-      </div>
+      <Row>
+        {this.props.data && (this.props.data.data.map(element =>
+          <Col key={element.date}>
+            <Card>
+              <Card.Body>
+                <Card.Title>{element.date}</Card.Title>
+                <Card.Text>{element.description}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
     )
    }
 }
