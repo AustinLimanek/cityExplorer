@@ -13,7 +13,7 @@ The user would need an internet browser and follow this link: `https://main--cit
 
 ## Architecture
 
-Visual Studio Code was used to write the code. npm was used to install axios, react, and react-bootstrap. The bootstrap library was used for components. Netlify was used to depoly the site. The project repository is located on GitHub: ``
+Visual Studio Code was used to write the code. npm was used to install axios, react, and react-bootstrap. The bootstrap library was used for components. Netlify was used to depoly the site. The project repository is located on GitHub: `https://github.com/AustinLimanek/cityExplorer`
 
 ## Change Log
 
@@ -24,7 +24,13 @@ Visual Studio Code was used to write the code. npm was used to install axios, re
 
 ## Credit and Collaborations
 
-Lucy Gelderloos - worked on lab 6 data flow diagram
-Mandy Mason - help with Netlify to locationIQ token access.
+Lucy Gelderloos - worked on lab 6 and 8 data flow diagram.
+Erin Ranta - sketched out server extension in lab 7.
+Mandy Menson - diagramed utilization of TMBD API to pull movie information && help with Netlify to locationIQ token access.
+Anthony Johnson & Caelin Hargrave - data flow diagram for the full city-explorer application and it's communication with the city-explorer-api server, which connects to three API technologies.
 
-![Lab 06 Whiteboard](.src/dataflowdiagram.png)
+![Lab 6 Whiteboard](./src/img/lab6.png)
+![Lab 7 Whiteboard](./src/img/lab7.png)
+![Lab 8 Whiteboard](./src/img/lab8.png)
+![Lab 9 Whiteboard](./src/img/lab9.png)
+![Lab 10 Whiteboard](./src/img/lab10.png)
